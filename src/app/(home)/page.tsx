@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ProductCard, { Product } from "./components/ProductCard";
+import ProductCard, { Product } from "./components/product-card";
+
+
 
 const products: Product[] = [
   {
@@ -67,7 +69,7 @@ export default function Home() {
       {/* Tab */}
       <section>
         <div className="container py-12">
-          <Tabs defaultValue="pizza" className="w-[400px]">
+          <Tabs defaultValue="pizza" >
             <TabsList>
               <TabsTrigger value="pizza" className="text-md">
                 Pizza
@@ -77,14 +79,22 @@ export default function Home() {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="pizza">
+              <div className="grid grid-cols-4 gap-6 mt-5">
               {
                 products.map((product) => (
                   <ProductCard product={product} key={product.id} />
                 ))
               }
+              </div>
             </TabsContent>
             <TabsContent value="beverages">
-              beverages list.
+            <div className="grid grid-cols-4 gap-6 mt-5">
+              {
+                products.map((product) => (
+                  <ProductCard product={product} key={product.id} />
+                ))
+              }
+              </div>
             </TabsContent>
           </Tabs>
         </div>
